@@ -45,11 +45,12 @@ To get started easily, we also have exposed some of the key product categories a
 ## Implementation:
 
 **libraries** : `matplotlib` `numpy` `pandas` `sklearn` `os` `keras` `tensorflow`
+
 ## Data Exploration:
 The Dataset is made up of different items that can be found in a marketplace. The idea is to use embeddings to search for similarity and find similar items just using the image.
 
 <img src="https://github.com/Pradnya1208/Similar-product-recommendation-system-using-CNN/blob/main/images/eda1.PNG?raw=true" width="70%">
-<img src="https://github.com/Pradnya1208/Similar-product-recommendation-system-using-CNN/blob/main/images/eda2.PNG?raw=true" width="80%">
+<img src="https://github.com/Pradnya1208/Similar-product-recommendation-system-using-CNN/blob/main/images/eda2.PNG?raw=true" width="50%">
 
 #### Top categories:
 
@@ -85,6 +86,7 @@ _________________________________________________________________
 
 ## Get embeddings for all the items in the dataset:
 We'll use following methid for getting embeddings:
+
 ```
 def embeddings(model, img_name):
     # Reshape
@@ -97,10 +99,13 @@ def embeddings(model, img_name):
     x   = preprocess_input(x)
     return model.predict(x).reshape(-1)
 ```
+
 ## Compute Cosine similarity:
 <img src="https://github.com/Pradnya1208/Similar-product-recommendation-system-using-CNN/blob/main/images/cosine%20similarity.PNG?raw=true" width="65%">
 
 <br>
+
+
 ```
 # Calculating pairwise similarity
 from sklearn.metrics.pairwise import pairwise_distances
@@ -115,7 +120,9 @@ array([[0.99999964, 0.63589436, 0.49575073, 0.59518987],
        [0.49575073, 0.509784  , 1.        , 0.471317  ],
        [0.59518987, 0.7375228 , 0.471317  , 0.9999991 ]], dtype=float32)
 ```
+
 ## Get recommendations:
+
 ```
 def get_recommendations(idx, df, top_n = 5):
     sim_idx    = indices[idx]
@@ -130,7 +137,8 @@ def get_recommendations(idx, df, top_n = 5):
 get_recommendations(2993, df, top_n = 5)
 ```
 #### Image:
-<img src="https://github.com/Pradnya1208/Similar-product-recommendation-system-using-CNN/blob/main/images/image.PNG?raw=true" width="50%">
+<img src="https://github.com/Pradnya1208/Similar-product-recommendation-system-using-CNN/blob/main/images/image.PNG?raw=true" width="30%">
+
 
 #### Recommendations:
 <img src="https://github.com/Pradnya1208/Similar-product-recommendation-system-using-CNN/blob/main/images/reco.PNG?raw=true">
